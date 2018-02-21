@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 
 import Header from './Header.jsx';
 import Input from './Input.jsx';
+import Todo from './Todo.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       todo: [],
+      done: [],
     }
   }
 
@@ -18,11 +20,37 @@ class App extends Component {
     console.log(this.state);
   }
 
+  completeItem = (item) => {
+    const { done, todo } = this.state;
+    done.push(item);
+    const removedFromTodo = todo.filter((todoItem) => todoItem !== item);
+    this.setState({ todo: removedFromTodo, done: done });
+  }
+
+  removeItems = (item) => {
+    const { done } = this.state;
+    const removedFromDone = done.filter((doneItem) => doneItem !== item);
+    this.setState({ done: removedFromDone });
+  }
+
   render() {
+    const { todo, done } = this.state;
     return (
       <div className="main-container">
         <Header />
         <Input submitInput={this.submitInput} />
+        <Todo 
+          todo={todo} 
+          type="Items Todo"
+          remove={this.completeItem}
+          blankText="Add items to your list"
+        />
+        <Todo
+          todo={done}
+          type="Done Items"
+          remove={this.removeItems}
+          blankText="Remove items from this list"
+        />
       </div>
     );
   }

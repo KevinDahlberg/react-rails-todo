@@ -25,6 +25,7 @@ export default class Input extends Component {
         const { submitInput } = this.props;
         const { input } = this.state;
         submitInput(input);
+        this.setState({ input: '' });
     }
     
     render() {
