@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardText } from 'react-md';
+import { Card, CardTitle, CardText, List, ListItem } from 'react-md';
 import PropTypes from 'prop-types';
 
-const ListItem = (props) => {
+const ItemForList = (props) => {
     const onClick = () => {
         const { remove, item } = props;
         remove(item);
     }
     return (
-        <li onClick={onClick}>{props.item}</li>
+        <ListItem onClick={onClick} primaryText={props.item} />
     )
 }
 
@@ -33,11 +33,11 @@ export default class Todo extends Component {
                 <CardText>
                     {todo.length === 0 ? 
                     <p>{blankText}</p> :
-                    <ul>
+                    <List>
                         {todo.map((item,idx) => (
-                            <ListItem remove={this.onClick} item={item} key={idx} />
+                            <ItemForList remove={this.onClick} item={item} key={idx} />
                         ))}
-                    </ul>}
+                    </List>}
                 </CardText>
             </Card>
         )

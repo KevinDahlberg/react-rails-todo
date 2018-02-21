@@ -17,7 +17,6 @@ class App extends Component {
     const { todo } = this.state;
     todo.push(input);
     this.setState({ todo: todo });
-    console.log(this.state);
   }
 
   completeItem = (item) => {
@@ -50,7 +49,7 @@ class App extends Component {
             todo={done}
             type="Done Items"
             remove={this.removeItems}
-            blankText="Remove items from this list"
+            blankText="Delete items from this list"
           />
         </div>
       </div>
