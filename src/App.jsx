@@ -39,18 +39,20 @@ class App extends Component {
       <div className="main-container">
         <Header />
         <Input submitInput={this.submitInput} />
-        <Todo 
-          todo={todo} 
-          type="Items Todo"
-          remove={this.completeItem}
-          blankText="Add items to your list"
-        />
-        <Todo
-          todo={done}
-          type="Done Items"
-          remove={this.removeItems}
-          blankText="Remove items from this list"
-        />
+        <div className="card-container">
+          <Todo 
+            todo={todo} 
+            type="Items Todo"
+            remove={this.completeItem}
+            blankText="Add items to your list"
+          />
+          <Todo
+            todo={done}
+            type="Done Items"
+            remove={this.removeItems}
+            blankText="Remove items from this list"
+          />
+        </div>
       </div>
     );
   }
